@@ -56,7 +56,7 @@ To run the Fake Bank API on your local machine, follow these steps:
 
 9. To create a user, run the following command and follow the instructions:
     ```
-    python3 manage.py createsuperuser
+    python manage.py createsuperuser
     ```
     This will enable you to login through http://localhost:8000/admin and browse the database
 
@@ -64,4 +64,4 @@ To run the Fake Bank API on your local machine, follow these steps:
 POST /api/account/add: Create a new bank account for a customer.\
 GET /api/accounts/{account_id}/balance: Retrieve the balance for a given account.\
 POST /api/transactions/transfer: Transfer an amount between two accounts.\
-GET /api/accounts/{account_id}/transfer-history: Retrieve the transfer history for a given account.\
+GET /api/accounts/{account_id}/transfer-history: Retrieve the transfer history for a given account.
