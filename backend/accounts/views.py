@@ -1,40 +1,39 @@
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
-
+from rest_framework import generics, status
 from .serializers import AccountSerializer
 from .models import Account
 from transactions.serializers import TransactionSerializer
 
 
-@api_view(['POST'])
-def add_account(request):
-    """
-    Retrieve account details.
+class AddAccountAPIView(generics.GenericAPIView):
+    serializer_class = AccountSerializer
 
-    This function retrieves the details of all accounts and returns them as a response.
+    def post(self, request, *args, **kwargs):
+        """
+        Retrieve account details.
 
-    Parameters:
-    - request: The request object.
+        This function retrieves the details of all accounts and returns them as a response.
 
-    Returns:
-    - Response: The serialized account details.
-    """
-    try:
-        serializer = AccountSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        validated_data = serializer.validated_data
+        Parameters:
+        - request: The request object.
 
-        new_account = Account.objects.create(
-            customer_id=validated_data["customer_id"],
-            balance=validated_data["balance"],
-            description=validated_data["description"]
-        )
+        Returns:
+        - Response: The serialized account details.
+        """
+        try:
+            data = request.data
+            new_account = Account.objects.create(
+                customer_id=data["customer_id"],
+                balance=data["balance"],
+                description=data["description"]
+            )
 
-        return Response({"account_id": new_account.account_id})
+            return Response({"account_id": new_account.account_id})
+        except Exception as e:
+            return Response({"status": 500, "error": str(e)})
 
-    except Exception as e:
-        return Response({"status": 500, "error": str(e)})
 
 
 @api_view(['GET'])
