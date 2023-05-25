@@ -1,6 +1,6 @@
 # Fake Bank API
 
-The Fake Financial Institution API provides a backend HTTP API for bank employees to manage bank accounts and perform transactions. It allows creating new accounts, transferring amounts between accounts, and retrieving account balances and transfer history.
+The Fake Bank API provides a backend HTTP API for bank employees to manage bank accounts and perform transactions. It allows creating new accounts, transferring amounts between accounts, and retrieving account balances and transfer history.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ To run the Fake Bank API on your local machine, follow these steps:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/your-username/fake-financial-institution-api.git
+   git clone https://github.com/your-username/bank_api.git
    ```
 
 2. Navigate to the project directory:
